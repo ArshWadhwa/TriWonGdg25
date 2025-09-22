@@ -1,4 +1,4 @@
-# 🏥 AI Medical Doctor
+# AI Medical Doctor
 
 A cutting-edge, full-stack medical consultation platform powered by advanced AI technologies. This application provides instant medical analysis through voice recognition, medical image analysis, and professional AI-generated responses with ICD-10 medical codes.
 
