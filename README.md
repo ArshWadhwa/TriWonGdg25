@@ -2,8 +2,6 @@
 
 A cutting-edge, full-stack medical consultation platform powered by advanced AI technologies. This application provides instant medical analysis through voice recognition, medical image analysis, and professional AI-generated responses with ICD-10 medical codes.
 
-![Medical AI](https://img.shields.io/badge/Medical-AI-blue) ![React](https://img.shields.io/badge/React-19.1.1-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-green) ![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue) ![Python](https://img.shields.io/badge/Python-3.12-yellow)
-
 ## 🌟 Features
 
 ### 🤖 AI-Powered Medical Analysis
