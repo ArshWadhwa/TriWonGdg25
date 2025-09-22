@@ -1,12 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Stethoscope, Brain, Mic, Image, Clock, Menu, X } from 'lucide-react';
+import { Stethoscope, Brain, Mic, Image, Clock, Menu, X, Zap } from 'lucide-react';
+import './LandingPage.css';
 
 const LandingPage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [chaosMode, setChaosMode] = React.useState('default');
+
+  const chaosBackgrounds = [
+    'default',
+    'bg-chaos-matrix',
+    'bg-chaos-fire', 
+    'bg-chaos-neon',
+    'bg-chaos-psychedelic',
+    'bg-chaos-glitch',
+    'bg-chaos-ocean',
+    'bg-chaos-cosmic'
+  ];
+
+  const activateChaos = () => {
+    const randomBg = chaosBackgrounds[Math.floor(Math.random() * chaosBackgrounds.length)];
+    setChaosMode(randomBg);
+    
+    // Add some screen shake for extra chaos
+    document.body.style.animation = 'chaos-shake 0.5s ease-in-out';
+    setTimeout(() => {
+      document.body.style.animation = '';
+    }, 500);
+  };
+
+  const getBackgroundClass = () => {
+    if (chaosMode === 'default') {
+      return 'min-h-screen bg-gradient-to-br from-slate-800 to-blue-900 text-white';
+    }
+    return `min-h-screen ${chaosMode} text-white`;
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 to-blue-900 text-white">
+    <div className={getBackgroundClass()}>
       {/* Enhanced Navigation Bar */}
       <nav className="fixed top-0 w-full z-50 bg-slate-900/95 backdrop-blur-lg border-b border-white/10 shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,6 +60,14 @@ const LandingPage: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
+              <button
+                onClick={activateChaos}
+                className="chaos-btn px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center space-x-2"
+                title="Randomize Background Chaos!"
+              >
+                <Zap className="w-4 h-4" />
+                <span>CHAOS</span>
+              </button>
               <Link 
                 to="/consultation" 
                 className="text-white/80 hover:text-white transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10"
@@ -63,6 +102,14 @@ const LandingPage: React.FC = () => {
                 <a href="#contact" className="block text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Contact</a>
                 <a href="#blog" className="block text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Blog</a>
                 <div className="pt-4 pb-2 border-t border-white/10 mt-4">
+                  <button
+                    onClick={activateChaos}
+                    className="chaos-btn w-full px-3 py-2 rounded-lg font-semibold mb-2 text-center flex items-center justify-center space-x-2"
+                    title="Randomize Background Chaos!"
+                  >
+                    <Zap className="w-4 h-4" />
+                    <span>BACKGROUND CHAOS</span>
+                  </button>
                   <Link to="/consultation" className="block text-white/80 hover:text-white px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Login</Link>
                   <Link to="/consultation" className="block bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-3 py-2 rounded-lg font-semibold mt-2 text-center">Get Started</Link>
                 </div>
